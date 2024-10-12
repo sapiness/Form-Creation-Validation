@@ -21,14 +21,13 @@ document.addEventListener("DOMContentLoaded", function(){
     if (username.length < 3){
         isValid = false;
          messages.push('too short');
-        
-        
+           
     }
 
-    // if (passwordValue.length < 8){
-    //     isValid === false;
-    //     messages.push('Password must be 8 characters or more');
-    // }
+    if (passwordValue.length <= 8){
+        isValid = false;
+        messages.push('Password must be 8 characters or more');
+    }
 
     feedbackDiv.style.display = 'block';
      if (isValid = true){
