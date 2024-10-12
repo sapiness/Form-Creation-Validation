@@ -2,44 +2,42 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const form = document.getElementById("registration-form");
     const feedbackDiv = document.getElementById("form-feedback");
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email".value);
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
 
 
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
-    const passValue = password.value.trim();
+    const passwordValue = password.value.trim();
 
     
-    form.addEventListener("submit", e => {
-       e.preventDefault();
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
  
-    const isValid = true;
-    const messages = [];
+       let isValid = true;
+       const messages = [];
 
-    if(username.length < 3){
+    if (usernameValue.length < 3){
         isValid = false;
-        messages.push("too short");
+         messages.push('too short');
+        
         
     }
 
-    if(!password.value.length >= 8){
-        isValid = false;
-        messages.push("Password must be 8 characters or more");
-    }
+    // if (passwordValue.length < 8){
+    //     isValid === false;
+    //     messages.push('Password must be 8 characters or more');
+    // }
 
-})
-
-feedbackDiv.style.display = "block";
-
-if(isValid = true){
+    feedbackDiv.style.display = 'block';
+     if (isValid = true){
     feedbackDiv.textContent = "Registration successful!";
-}
-
-if(isValid = false){
-    feedbackDiv.textContent = " incomplete Registration";
+    feedbackDiv.style.color = "#28a745";
+    } else { 
+    feedbackDiv.innerHTML = messages.join + "<br>";
     feedbackDiv.style.color = "#dc3545";
 }
     
+})
     })
