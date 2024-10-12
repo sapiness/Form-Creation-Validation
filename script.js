@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
        let isValid = true;
        const messages = [];
 
-    if (usernameValue.length < 3){
+    if (username.length < 3){
         isValid = false;
          messages.push('too short');
         
