@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
            
     }
 
-    if (passwordValue.length <= 8){
+    if (password.length <= 8){
         isValid = false;
         messages.push('Password must be 8 characters or more');
     }
