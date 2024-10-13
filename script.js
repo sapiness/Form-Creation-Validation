@@ -20,9 +20,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if (username.length < 3){
         isValid = false;
-         messages.push('too short');
-           
+         messages.push('too short'); 
+        
     }
+
+if (!email.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+    isValid = false;
+    messages.push('Does not contain @'); 
+}
 
     if (password.length <= 8){
         isValid = false;
@@ -33,7 +38,9 @@ document.addEventListener("DOMContentLoaded", function(){
      if (isValid = true){
     feedbackDiv.textContent = "Registration successful!";
     feedbackDiv.style.color = "#28a745";
-    } else { 
+    } 
+
+    if (isValid = false){
     feedbackDiv.innerHTML = messages.join + "<br>";
     feedbackDiv.style.color = "#dc3545";
 }
