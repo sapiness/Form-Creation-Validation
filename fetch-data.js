@@ -1,28 +1,46 @@
-async function fetchUserData() {
-    const apiUrl = fetch('https://jsonplaceholder.typicode.com/users')
 
-    const dataContainer = document.getElementById('api-data');
+//defining an asynchronous function named fetchUserData
 
+async function fetchUserData(){
+
+    //This URL points to the API endpoint from which you’ll fetch user data.
+   const apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+//HTML element where the API data will be displayed 
+    const dataContainer = document.getElementById("api-data");
+
+    // Employ a try-catch block to handle the fetching process and potential errors.
     try{
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const users = await response.json()
-            // return users;  
-        dataContainer.innerHTML = '';
+        //asynchronously get data from apiUrl
+    const response = await fetch(apiUrl);
 
-        const userList = document.createElement('ul');
+    // convert the response to JSON 
+    const users = await response.json();
+    
+    // clear container existing content before appending
+    dataContainer.innerHTML = "";
 
-        users.forEach(user => {
+    const userList = document.createElement("ul");
 
-           let list = document.createElement('li');
-           list.textContent = `${user.name}`;
-             
+    // Loop through the users array with forEach
+    users.forEach(user => {
+            List = document.createElement("li");
+            List.textContent= `${user.name}`;
+            userList.appendChild(List);
         });
-        userList.appendChild(list);
-    } catch (error) {
-        dataContainer.innerHTML = '';
-        dataContainer.textContent = 'Failed to load user data.';
-        }
-        
+
+    //After the loop, append userList to dataContainer
+    dataContainer.appendChild(userList);
+
+}
+    catch(error){
+        dataContainer.innerHTML = "";
+        dataContainer.textContent = "Failed to load user data.";
+    }
+
 }
 
-document.addEventListener("DOMContentLoaded",fetchUserData());
+// Invoking fetchUserData on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", fetchUserData);
+   
+
